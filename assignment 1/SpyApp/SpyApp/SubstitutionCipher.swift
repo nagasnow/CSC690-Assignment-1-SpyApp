@@ -171,7 +171,7 @@ struct SubstitutionCipher: Cipher {
 
 extension String {
     var isAlphabetic: Bool {
-        return !isEmpty && range(of: "[^A-Za-z]", options: .regularExpression) == nil
+        return !isEmpty && range(of: "[^A-Za-z ]", options: .regularExpression) == nil
     }
 }
 

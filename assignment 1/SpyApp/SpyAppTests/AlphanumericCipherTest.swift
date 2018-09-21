@@ -39,4 +39,20 @@ class AlphanumericCipherTest: XCTestCase {
         XCTAssertEqual("WWWWW",result2)
         XCTAssertEqual("44444",result)
     }
+    
+    func test_nonNumericInputForSecret() {
+        let cipher = AlphanumericCesarCipher()
+        let result = cipher.encode("b", secret: "nonNumericString")
+        let result2 = cipher.decode("b", secret: "nonNumericString")
+        
+        XCTAssertNil(result)
+        XCTAssertNil(result2)
+    }
+    
+    func test_emptyInputForSecret() {
+        let cipher = AlphanumericCesarCipher()
+        let result = cipher.encode("b", secret: "")
+        
+        XCTAssertNil(result)
+    }
 }

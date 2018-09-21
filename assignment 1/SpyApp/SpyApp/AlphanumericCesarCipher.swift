@@ -11,12 +11,14 @@ import Foundation
 struct AlphanumericCesarCipher: Cipher {
     
     func encode(_ plaintext: String, secret: String) -> String? {
+        guard let shiftBy = UInt32(secret) else {
+            return nil
+        }
         if(!plaintext.isAlphanumeric) {
             return "Error Not An Alphanumeric Input!"
         }
         
         var encoded = ""
-        let shiftBy = UInt32(secret)!
         
         for character in plaintext {
             var unicode = character.unicodeScalars.first!.value
@@ -42,12 +44,15 @@ struct AlphanumericCesarCipher: Cipher {
     }
     
     func decode(_ plaintext: String, secret: String) -> String? {
+        guard let shiftBy = UInt32(secret) else {
+            return nil
+        }
+        
         if(!plaintext.isAlphanumeric) {
             return "Error Not An Alphanumeric Input!"
         }
         
         var decoded = ""
-        let shiftBy = UInt32(secret)!
         
         for character in plaintext {
             var unicode = character.unicodeScalars.first!.value

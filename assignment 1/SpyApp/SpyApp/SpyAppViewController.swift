@@ -24,13 +24,6 @@ class SpyAppViewController: UIViewController {
             output.text = "Encoding Error!"
         }
         
-        
-       /* if let cipher = self.cipher {
-            output.text = cipher.encode(plaintext, secret: secret)
-        } else {
-            output.text = "No cipher chosen"
-        }*/
-        
     }
 
     @IBAction func decodeButtonPressed(_ sender: UIButton) {

@@ -23,6 +23,20 @@ class AlphanumericCipherTest: XCTestCase {
         let cipher = AlphanumericCesarCipher()
         let plaintext = "!"
         
-        cipher.encode(plaintext,secret: "")
+        let result = cipher.encode(plaintext,secret: "")
+        
+        XCTAssertNotNil(result)
+    }
+    
+    func testLoopingBetweenNumbersAndLetters() {
+        let cipher = AlphanumericCesarCipher()
+        let plaintext = "11111"
+        let plaintext2 = "zzzzz"
+        
+        let result = cipher.encode(plaintext2,secret:"5")
+        let result2 = cipher.decode(plaintext,secret:"5")
+        
+        XCTAssertEqual("WWWWW",result2)
+        XCTAssertEqual("44444",result)
     }
 }

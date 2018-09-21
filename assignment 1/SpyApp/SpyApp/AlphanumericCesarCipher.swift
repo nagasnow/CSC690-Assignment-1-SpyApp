@@ -28,11 +28,11 @@ struct AlphanumericCesarCipher: Cipher {
             unicode = unicode + shiftBy
             
             if(unicode > 90) {
-                unicode = 48 + (unicode - 90)
+                unicode = 48 + (unicode - 91)
             }
             
             if(unicode > 57 && unicode < 65) {
-                unicode = 65 + (unicode - 57)
+                unicode = 65 + (unicode - 58)
             }
             
             let shiftedCharacter = String(UnicodeScalar(UInt8(unicode)))
@@ -55,17 +55,17 @@ struct AlphanumericCesarCipher: Cipher {
                 unicode = unicode - 32
             }
             
-            var shiftedUnicode = unicode - shiftBy
+            unicode = unicode - shiftBy
             
             if(unicode < 65 && unicode > 57) {
-                shiftedUnicode = 57 - (unicode - 65)
+                unicode = 57 - (64 - unicode)
             }
             
             if(unicode < 48) {
-                shiftedUnicode = 90 - (unicode - 48)
+                unicode = 90 - (47 - unicode)
             }
             
-            let shiftedCharacter = String(UnicodeScalar(UInt8(shiftedUnicode)))
+            let shiftedCharacter = String(UnicodeScalar(UInt8(unicode)))
             decoded = decoded + shiftedCharacter
         }
         return decoded
